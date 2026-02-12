@@ -1,0 +1,28 @@
+services:
+
+# WordPress application container
+  app:
+    image: wordpress:latest
+    container_name: wordpress_app
+    ports:
+      - "80:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: root
+      WORDPRESS_DB_NAME: wordpressdb
+    depends_on:
+      - db
+
+# WordPress Database container
+  db:
+    image: mysql:5.7
+    container_name: wordpress_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpressdb
+    volumes:
+      - vol1:/var/lib/mysql
+
+volumes:
+  vol1:
