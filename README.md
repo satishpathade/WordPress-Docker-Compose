@@ -11,6 +11,9 @@ The goal of this project is to practice real-world DevOps skills like containeri
 - Docker volume for persistent database storage
 - Port mapping: EC2 port 80 → WordPress container port 80
 
+    ![wordpress-docker-compose-flow](Architecture/wordpress-docker-compose-flow.png)
+
+
 ---
 
 ## Tech Stack
@@ -31,49 +34,65 @@ The goal of this project is to practice real-world DevOps skills like containeri
 Wordpress-docker-compose
     ├── docker-compose.yml
     ├── README.md
-    └── Architect/
+    └── Architecture/
 ```
+---
+
+## Features
+
+- WordPress and MySQL multi-container deployment  
+- Docker Compose orchestration  
+- Persistent database storage with volumes  
+- Deployment on AWS EC2  
+- Accessible via public IP in browser
+
 ---
 
 ## Step-by-Step Deployment Guide (AWS EC2 + Docker Compose)
 
-- Launch EC2 Instance & SSH 
+1. Launch EC2 Instance & SSH 
+    - **Ubuntu 22.04**   
+    - Instance type: `t2.micro` (free tier)  
+    - Security Group, allow:
+        - SSH (22)
+        - HTTP (80)
 
-- Install Docker and start
-```
-sudo apt install docker -y
-sudo systemctl start docker
-sudo systemctl enable docker
-```
+2. Install Docker and start
+    ```
+    sudo apt install docker -y
+    sudo systemctl start docker
+    sudo systemctl enable docker
+    ```
 
-- Install Docker Compose
-```
-sudo curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-```
-- Make command executable
-```
-sudo chmod +x /usr/local/bin/docker-compose
-```
+3. Install Docker Compose command
+    ```
+    sudo curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    ```
+4. Make command executable
+    ```
+    sudo chmod +x /usr/local/bin/docker-compose
+    ```
 
-- Create Project Folder - WordPress
-```
-mkdir wordpress-docker
-cd wordpress-docker
-```
+5. Create Project Folder - WordPress
+    ```
+    mkdir wordpress-docker
+    cd wordpress-docker
+    ```
 
-- Write docker-compose.yml file
+6. Write docker-compose.yml file 
+
     [Docker-compose.yml](docker-compose.yml) 
 
-- Start Containers
-```
-docker compose up -d
-```
+7. Start Containers
+    ```
+    docker compose up -d
+    ```
 
 9. Check containers
-```
-docker ps
-```
+    ```
+    docker ps
+    ```
 10. Open in Browser
-```
-http://ec2-public-ip
-```
+    ```
+    http://ec2-public-ip
+    ```
