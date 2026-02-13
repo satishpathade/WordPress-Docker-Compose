@@ -37,34 +37,34 @@ Wordpress-docker-compose
 
 ## Step-by-Step Deployment Guide (AWS EC2 + Docker Compose)
 
-### Step 1: Launch EC2 Instance & SSH 
+- Launch EC2 Instance & SSH 
 
-### Step 2: Install Docker and start
+- Install Docker and start
 ```
 sudo apt install docker -y
 sudo systemctl start docker
 sudo systemctl enable docker
 ```
 
-### Step 3: Install Docker Compose
+- Install Docker Compose
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
-### Step 4: Make command executable
+- Make command executable
 ```
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-### Step 5: Create Project Folder - WordPress
+- Create Project Folder - WordPress
 ```
 mkdir wordpress-docker
 cd wordpress-docker
 ```
 
-### Step 6: Write docker-compose.yml file
+- Write docker-compose.yml file
     [Docker-compose.yml](docker-compose.yml) 
 
-### Step 8: Start Containers
+- Start Containers
 ```
 docker compose up -d
 ```
