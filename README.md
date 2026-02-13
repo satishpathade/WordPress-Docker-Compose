@@ -69,11 +69,11 @@ cd wordpress-docker
 docker compose up -d
 ```
 
-### Step 9: Check containers
+9. Check containers
 ```
 docker ps
 ```
-### Step 10: Open in Browser
+10. Open in Browser
 ```
 http://ec2-public-ip
 ```
